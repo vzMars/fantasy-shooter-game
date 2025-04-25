@@ -9,6 +9,7 @@ public class Game extends GameBase {
 	Lighting l = new Lighting(400, 0, 120);
 	Fire f = new Fire(400, 200, 120);
 	Ice i = new Ice(400, 400, 120);
+	Torch o = new Torch(400, 600, 120);
 	
 	public void inGameLoop() {
 		if(pressing[UP])	l.moveUp(4);
@@ -31,6 +32,7 @@ public class Game extends GameBase {
 		l.draw(pen);
 		f.draw(pen);
 		i.draw(pen);
+		o.draw(pen);
 	}
 
 	public void initialize() {
