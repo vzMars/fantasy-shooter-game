@@ -1,0 +1,45 @@
+// 1  = A = Grass
+// 2  = B = Water
+// 3  = C = Road
+// 4  = D = Sign
+// 5  = E = Tree
+// 6  = F = Bridge
+// 7  = G = House
+// 8  = H = Town Entrance
+// 9  = I = Cave/Forest Entrance
+// 10 = J = Border-Top
+// 11 = K = Border-Right
+// 12 = L = Border-Bottom
+// 13 = M = Border-Left
+// 14 = N = Border-Top-Left
+// 15 = O = Border-Top-Left-Curve
+// 16 = P = Border-Bottom-Right
+// 17 = Q = Border-Bottom-Right-Curve
+// 18 = R = Border-Bottom-Left-Curve
+// 19 = S = Border-Top-Right-Curve
+// 20 = T = Stone Floor
+// 21 = U = Stone Floor Top-Left
+// 22 = V = Stone Floor Top
+// 23 = W = Stone Floor Top-Right
+// 24 = X = Stone Floor Left
+// 25 = Y = Stone Floor Right
+// 26 = Z = Stone Floor Bottom-Left
+// 27 = [ = Stone Floor Bottom
+// 28 = \ = Stone Floor Bottom-Right
+// 29 = ] = Green Stone Floor
+// 30 = ^ = Vertical Stone Wall
+// 31 = _ = Horizontal Stone Wall
+// 32 = ` = Stone Wall
+// 33 = a = Wall with Green Liquid
+// 34 = b = Wall with Green Liquid & Closed Gate
+// 35 = c = Wall with Green Liquid & Open Gate
+// 36 = d = Pot
+// 37 = e = Crate
+// 38 = f = Downstairs
+// 39 = g = Upstairs (Top Half)
+// 40 = h = Upstairs (Bottom Half)
+// 41 = i = Metal Door
+// 42 = j = Trap Hole Top
+// 43 = k = Trap Hole Left
+// 44 = l = Trap Hole Right
+// 45 = m = Black Square

@@ -11,6 +11,9 @@ public abstract class GameBase extends Applet implements Runnable, KeyListener {
 	Thread t;
 
 	static boolean[] pressing = new boolean[1024];
+	
+	public static final int SCREEN_WIDTH = 1280;
+	public static final int SCREEN_HEIGHT = 1280;
 
 	public static final int UP = KeyEvent.VK_UP;
 	public static final int DN = KeyEvent.VK_DOWN;
@@ -83,7 +86,7 @@ public abstract class GameBase extends Applet implements Runnable, KeyListener {
 	public abstract void initialize();
 
 	public void init() {
-		offScreen = this.createImage(1920, 1080);
+		offScreen = this.createImage(SCREEN_WIDTH, SCREEN_HEIGHT);
 		offScreen_pen = offScreen.getGraphics();
 
 		initialize();
@@ -108,7 +111,7 @@ public abstract class GameBase extends Applet implements Runnable, KeyListener {
 	}
 
 	public void update(Graphics pen) {
-		offScreen_pen.clearRect(0, 0, 1920, 1080);
+		offScreen_pen.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		paint(offScreen_pen);
 		pen.drawImage(offScreen, 0, 0, null);
 	}
