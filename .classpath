@@ -9,5 +9,7 @@
 	<classpathentry kind="src" path="images_npc"/>
 	<classpathentry kind="src" path="images_enemies"/>
 	<classpathentry kind="src" path="images_spells"/>
+	<classpathentry kind="src" path="images_menu"/>
+	<classpathentry kind="src" path="images_borders"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
