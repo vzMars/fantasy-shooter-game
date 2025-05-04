@@ -28,6 +28,8 @@ public class Town extends Room {
 				Room.current = Room.room[4];
 				player.x = 460;
 				player.y = 121;
+//				Game.timer.reset();
+//				Game.timer.start();
 		}		
 	}
 	
@@ -35,6 +37,8 @@ public class Town extends Room {
 	public void draw(Graphics pen) {
 		map.draw(pen);
 		player.draw(pen);
+		timer.draw(pen);
+		hotbar.draw(pen);
 	}
 	
 }

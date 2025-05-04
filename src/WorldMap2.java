@@ -20,6 +20,8 @@ public class WorldMap2 extends Room {
 				Room.current = Room.room[2];
 				player.x = 1207;
 				player.y = 1151;
+//				Game.timer.reset();
+//				Game.timer.start();
 		}
 	}
 	
@@ -27,6 +29,8 @@ public class WorldMap2 extends Room {
 	public void draw(Graphics pen) {
 		map.draw(pen);
 		player.draw(pen);
+		timer.draw(pen);
+		hotbar.draw(pen);
 	}
 	
 }

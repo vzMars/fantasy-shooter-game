@@ -20,6 +20,8 @@ public class Dungeon5 extends Room {
 				Room.current = Room.room[9];
 				player.x = 636;
 				player.y = 1083;
+//				Game.timer.reset();
+//				Game.timer.start();
 		}	
 	}
 	
@@ -27,5 +29,7 @@ public class Dungeon5 extends Room {
 	public void draw(Graphics pen) {
 		map.draw(pen);
 		player.draw(pen);
+		timer.draw(pen);
+		hotbar.draw(pen);
 	}
 }
