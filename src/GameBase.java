@@ -3,8 +3,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public abstract class GameBase extends Applet implements Runnable, KeyListener {
+public abstract class GameBase extends Applet implements Runnable, KeyListener, MouseListener {
 	Image offScreen;
 	Graphics offScreen_pen;
 
@@ -82,6 +84,10 @@ public abstract class GameBase extends Applet implements Runnable, KeyListener {
 	public static final int F10 = KeyEvent.VK_F10;
 	public static final int F11 = KeyEvent.VK_F11;
 	public static final int F12 = KeyEvent.VK_F12;
+	
+	public static       int mx;
+	public static       int my;
+	public static       boolean mousePressed;
 
 	public abstract void initialize();
 
@@ -90,7 +96,8 @@ public abstract class GameBase extends Applet implements Runnable, KeyListener {
 		offScreen_pen = offScreen.getGraphics();
 
 		initialize();
-
+		
+		addMouseListener(this);
 		addKeyListener(this);
 		requestFocus();
 
@@ -125,6 +132,33 @@ public abstract class GameBase extends Applet implements Runnable, KeyListener {
 	}
 
 	public void keyTyped(KeyEvent e) {
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		mx = e.getX();
+		my = e.getY();
+		mousePressed = true;
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		mousePressed = false;
 	}
 	
 }
