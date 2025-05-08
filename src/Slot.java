@@ -39,7 +39,7 @@ public class Slot extends Rect{
 	}
 	
 	public void updateSRect() {
-		sRectSize = (int) (w /1.28);
+		sRectSize = (int) (w /1.2);
 		sRectX    = this.x + (w - sRectSize) / 2;
 		sRectY    = this.y + (h - sRectSize) / 2;
 	}
