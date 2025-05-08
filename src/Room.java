@@ -25,7 +25,6 @@ public abstract class Room extends RoomBase {
 	public Room(String[] filename) {
 		map = new Map(filename, SCALE);
 		room[count++] = this;
-		hotbar.setLocation(640 - hotbar.getWidth() / 2,  1260 - hotbar.getHeight());
 	}
 	
 	public void draw(Graphics pen) {

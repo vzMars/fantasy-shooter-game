@@ -6,12 +6,9 @@ public class Game extends GameBase {
 	static PauseButton pauseBtn;
 	
 	public void inGameLoop() {
-		
 		pauseBtn.inGameLoop();
 		menu.inGameLoop();
 		Room.current.inGameLoop();
-		
-		
 		
 	}
 	
@@ -24,11 +21,12 @@ public class Game extends GameBase {
 	public void initialize() {
 		setSize(1280, 1280);
 		
-		
 		pauseBtn = new PauseButton(1205, 5, 70);
 		menu     = new Menu();
 		
 		pauseBtn.pause();
+		
+		Room.hotbar.setLocation(640 - Room.hotbar.getWidth() / 2,  1260 - Room.hotbar.getHeight());
 		
 //		Room.timer.setEnabled(true);
 		
