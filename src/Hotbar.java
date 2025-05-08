@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 
 public class Hotbar {
-	static int slotSize  = 110;
+	static int slotSize  = 100;
 	static int slotDist  = slotSize + 100; //distance between slots
 	
 	private int x;
