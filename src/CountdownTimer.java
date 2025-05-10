@@ -17,24 +17,28 @@ public class CountdownTimer extends Rect{
 	private String  timeAsString;
 	private Image   borderImg;
 	private Color   color;
-	private boolean isEnabled;
+	private boolean isDisabled;
 	
 	public final static int MILLISECONDS = 0;
 	public final static int SECONDS      = 1;
 	public final static int MINUTES      = 2;
 	
 	
+	public CountdownTimer(long maxTime, int timeUnit) {
+		this(0, 0, 0, maxTime, timeUnit);
+	}
+	
 	public CountdownTimer(int x, int y, int scale, long maxTime, int timeUnit) {
 		super(x, y, 2 * scale, 1 * scale);
 		reset(maxTime, timeUnit);
 		
-		borderImg = Toolkit.getDefaultToolkit().getImage("border_0.png");
-		color     = new Color(255, 117, 24, 200);
-		isEnabled = false;
+		borderImg  = Toolkit.getDefaultToolkit().getImage("border_0.png");
+		color      = new Color(255, 117, 24, 200);
+		isDisabled = false;
 	}
 	
 	public void inGameLoop() {
-		if(isStarted && !isPaused && !hasEnded && isEnabled) {
+		if(isStarted && !isPaused && !hasEnded && !isDisabled) {
 			elapsedTime = System.currentTimeMillis() - startTime;
 			timeLeft    = maxTime   - elapsedTime;
 			
@@ -60,8 +64,8 @@ public class CountdownTimer extends Rect{
 		return hasEnded;
 	}
 	
-	public boolean isEnabled() {
-		return isEnabled;
+	public boolean isDisabled() {
+		return isDisabled;
 	}
 	
 	public boolean isStarted() {
@@ -91,8 +95,8 @@ public class CountdownTimer extends Rect{
 		return maxTime;
 	}
 	
-	public void setEnabled(boolean isEnabled) {
-		this.isEnabled = isEnabled;
+	public void setDisabled(boolean isDisabled) {
+		this.isDisabled = isDisabled;
 	}
 	
 	
@@ -129,18 +133,18 @@ public class CountdownTimer extends Rect{
 	}
 	
 	public void start() {
-		if(isEnabled && !isStarted && !hasEnded && !isPaused) {
+		if(!isDisabled && !isStarted && !hasEnded && !isPaused) {
 			isStarted = true;
 			startTime = System.currentTimeMillis();
 		}
 	}
 	
 	public void pause() {
-		if(isEnabled && isStarted && !hasEnded && !isPaused) isPaused = true;
+		if(!isDisabled && isStarted && !hasEnded && !isPaused) isPaused = true;
 	}
 	
 	public void resume() {
-		if(isEnabled && isStarted && !hasEnded && isPaused) {
+		if(!isDisabled && isStarted && !hasEnded && isPaused) {
 			startTime = System.currentTimeMillis() - elapsedTime;
 			isPaused  = false;
 		}

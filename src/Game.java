@@ -10,6 +10,7 @@ public class Game extends GameBase {
 		menu.inGameLoop();
 		Room.current.inGameLoop();
 		
+		
 	}
 	
 	public void paint(Graphics pen) {
@@ -28,11 +29,10 @@ public class Game extends GameBase {
 		
 		Room.hotbar.setLocation(640 - Room.hotbar.getWidth() / 2,  1260 - Room.hotbar.getHeight());
 		
-//		Room.timer.setEnabled(true);
+		Room.timer.setDisabled(true);
 		
 		Room.setUpInput(pressing);
-		
-		
+				
 		new WorldMap1();
 		new WorldMap2();
 		new WorldMap3();
@@ -43,6 +43,7 @@ public class Game extends GameBase {
 		new Dungeon4();
 		new Dungeon5();
 		new Dungeon6();
+		
 		
 		Room.current = Room.room[0];
 	}
