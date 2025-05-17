@@ -23,6 +23,10 @@ public abstract class Room extends RoomBase {
 	
 	static Room current;
 	
+	//These variable keeps track of how low a button is pressed  and prevents spamming
+	int animationCounter = 0;
+	int animationLimit = 0;  // Different weapon require differnt keystroke length
+	
 	public Room(String[] filename) {
 		map = new Map(filename, SCALE);
 		room[count++] = this;
@@ -36,60 +40,67 @@ public abstract class Room extends RoomBase {
 	}
 	
 	public abstract void inGameLoopRoomSpecific();
-	
-	
-	//These variable keeps track of how low a button is pressed  and prevents spamming
-	int animationCounter = 0;
-	int animationLimit = 0;  // Different weapon require differnt keystroke length
-	
+
 	public void inGameLoop() {
 //		System.out.println("Player x:" + player.x);
 //		System.out.println("Player y:" + player.y);
 		
-		timer.inGameLoop();
+		// Timer for the room
+//		timer.inGameLoop();
 		
 		if(!Game.isPaused && timer.hasEnded()) Game.pauseBtn.pause();
 		if(Game.isPaused) return;
 		
+		playerAttackType();
+		playerMovement();
+		playerAttack();
 		
+		checkSpellsOverLap();
+		
+		checkWalls(player);
+		
+		checkOffScreen(player);
+		inGameLoopRoomSpecific();
+	}
+	
+	public void playerAttackType() {
+		// Fire Spell
 		if(pressing[_1]) {
-			
-			 player.setAttackType(0);
-			 hotbar.setCurrentSlot(0);
-			 
-			 animationLimit = 1;
+			player.setAttackType(0);
+			hotbar.setCurrentSlot(0);
+			animationLimit = 1;
 		}		
-			
+		
+		// Ice Spell
 		if(pressing[_2])  { 
-			
 			player.setAttackType(1);
 			hotbar.setCurrentSlot(1);
 			animationLimit = 1;
 		}
+		
+		// Lighting Spell
 		if(pressing[_3])  {
-			
 			player.setAttackType(2);
 			hotbar.setCurrentSlot(2);
 			animationLimit = 1;
 		}
 		
+		// Sword
 		if(pressing[_4]) {
 			player.setAttackType(3);
 			animationLimit = 15;
-			
-			
 //			hotbar.setCurrentSlot(3);	 Needs implementation in the HotBar class		
 		}
-		
-		
-		
+	}
+	
+	public void playerMovement() {
 		if(pressing[UP])	player.moveUp(4);
 		if(pressing[DN])	player.moveDown(4);
 		if(pressing[LT])	player.moveLeft(4);
 		if(pressing[RT])	player.moveRight(4);
-		
-		
-		
+	}
+	
+	public void playerAttack() {
 		if(pressing[_A] && animationCounter< animationLimit ) {  
 			player.attack(); 
 			animationCounter++ ;
@@ -100,32 +111,22 @@ public abstract class Room extends RoomBase {
 		
 //		if(pressing [_A])  player.attack();
 //		if(pressing )
-		
-		
-		
-
-		checkWalls(player);
-		
-		for(Sprite Spell: new ArrayList<>(player.spells)) {
-			
-			for(Rect r : map.wall) {
-				
-				if(Spell.overlaps(r)) {
-					player.spells.remove(Spell);
-				}
-			}
-			
-		}
-		
-		
-		checkOffScreen(player);
-		inGameLoopRoomSpecific();
 	}
-	
+  	
 	public void checkWalls(Sprite s) {
 		for(int i = 0; i < map.wall.length; i++) {
 			if(s.overlaps(map.wall[i])) {
 				pushAway(s, map.wall[i]);
+			}
+		}
+	}
+	
+	public void checkSpellsOverLap() {
+		for(Sprite Spell: new ArrayList<>(player.spells)) {
+			for(Rect r : map.wall) {
+				if(Spell.overlaps(r)) {
+					player.spells.remove(Spell);
+				}
 			}
 		}
 	}
