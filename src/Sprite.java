@@ -18,10 +18,19 @@ public abstract class Sprite extends Rect {
 	Rect hurtBox; // Used to know if to take damage
 	Rect radius;  // Used for Npc to detact and move closer
 	Rect attackBox;  // Used for NPC if with in, attack
+	
+	int vx;
+	int vy;
+	
+	int startingX;
+	int startingY;
 
 	public Sprite(String name, int x, int y, int w, int h, String[] pose, int count, int duration, int health) {
 		super(x, y, w, h);
 		this.health = health;
+		
+		startingX = x;
+		startingY = y;
 		
 		animation = new Animation[pose.length];
 		
@@ -76,6 +85,42 @@ public abstract class Sprite extends Rect {
 		if(x < s.x)  moveRight(2);
 		if(y > s.y)  moveUp(2);
 		if(y < s.y)  moveDown(2);
+	}
+	
+	public void setVelocityX(int vx) {
+		this.vx = vx;
+	}
+	
+	public void setVelocityY(int vy) {
+		this.vy = vy;
+	}
+	
+	public void moveX() {
+		x += vx;
+		moving = true;
+		if (vx < 0) {
+			pose = LT;
+		} else {
+			pose = RT;
+		}
+	}
+	
+	public void moveY() {
+		y += vy;
+		moving = true;
+		if (vy < 0) {
+			pose = UP;
+		} else {
+			pose = DN;
+		}
+	}
+	
+	public void bounceOffVerticalSurface() {
+		vy = -vy;
+	}
+	
+	public void bounceOffHorizontalSurface() {
+		vx = -vx;
 	}
 
 	public abstract void update();

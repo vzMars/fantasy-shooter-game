@@ -1,6 +1,14 @@
 import java.awt.Graphics;
 
 public class WorldMap3 extends Room {
+	
+	Sprite[] sprites = { 
+			new Crocodile(811,955,SCALE), 
+			new Crocodile(607,777,SCALE), 
+			new Crocodile(349,833,SCALE), 
+			new Orge(469,1005,SCALE),
+			new Orge(605, 1151,SCALE),
+			new Orge(785,447,SCALE)};
 
 	static String[] filename = {
 			"WorldMap3_Floor&Walls.txt", 
@@ -20,6 +28,7 @@ public class WorldMap3 extends Room {
 	
 	public void inGameLoopRoomSpecific() {
 		enterTown();
+		monsterMovement(sprites);   
 	}
 	
 	public void enterTown() {
@@ -37,6 +46,13 @@ public class WorldMap3 extends Room {
 	public void draw(Graphics pen) {
 		map.draw(pen);
 		player.draw(pen);
+		
+		for(Sprite s : sprites) {
+			if(!s.isDead()) {
+				s.draw(pen);
+			}
+		}
+		
 		timer.draw(pen);
 		hotbar.draw(pen);
 	}

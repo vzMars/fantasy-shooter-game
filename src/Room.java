@@ -126,7 +126,7 @@ public abstract class Room extends RoomBase {
 		int xDistance = Math.abs(player.x - s.x);
 		int yDistance = Math.abs(player.y - s.y);
 		
-		if (xDistance < 200 && yDistance < 200) {
+		if (xDistance < 150 && yDistance < 150) {
 			s.chase(player);
 		}
 	}
@@ -171,6 +171,18 @@ public abstract class Room extends RoomBase {
 	}
 	
 	public void pushAway(Sprite s, Rect r) {
-		s.pushAwayFrom(r);
+		if(s instanceof RedNPC || 
+		   s instanceof OrcNPC || 
+		   s instanceof BlueNPC || 
+		   s instanceof PurpleNPC) {
+			if(s.vx > 0 || s.vx < 0) {
+				s.bounceOffHorizontalSurface();
+			} else {
+				s.bounceOffVerticalSurface();
+			}
+		} else {
+			s.pushAwayFrom(r);
+		}
+		
 	}
 }
