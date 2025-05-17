@@ -6,4 +6,12 @@ public class OrcNPC extends Sprite {
 		super("orc", x, y, scale, scale, direction, 5, 10);
 	}
 	
+	
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

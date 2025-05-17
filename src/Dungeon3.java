@@ -2,6 +2,10 @@ import java.awt.Graphics;
 
 public class Dungeon3 extends Room {
 
+	
+	
+	
+	
 	static String[] filename = {
 			"Dungeon3_Floor&Walls.txt", 
 			"Dungeon3_Objects.txt"};
@@ -28,6 +32,9 @@ public class Dungeon3 extends Room {
 	// room specific draw method that overrides Room's draw method
 	public void draw(Graphics pen) {
 		map.draw(pen);
+		
+		
+		
 		player.draw(pen);
 		timer.draw(pen);
 		hotbar.draw(pen);

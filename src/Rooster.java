@@ -6,4 +6,11 @@ public class Rooster extends Sprite {
 		super("rooster", x, y, scale, scale, direction, 3, 10);
 	}
 	
+	
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

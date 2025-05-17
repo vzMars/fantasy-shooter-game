@@ -6,4 +6,11 @@ public class PurpleNPC extends Sprite {
 		super("purple", x, y, scale, scale, direction, 4, 10);
 	}
 	
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

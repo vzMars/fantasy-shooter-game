@@ -60,6 +60,23 @@ public class Rect {
 		y = r.y + r.h + 1;
 	}
 	
+	public void chase(Rect r)
+	{
+		if(x > r.x)  x -= 2;
+		if(x < r.x)  x += 2;
+		if(y > r.y)  y -= 2;
+		if(y < r.y)  y += 2;
+	}
+	
+	public void evade(Rect r)
+	{
+		if(x > r.x)  x += 2;
+		if(x < r.x)  x -= 2;
+		if(y > r.y)  y += 2;
+		if(y < r.y)  y -= 2;
+	}
+	
+	
 	public void draw(Graphics pen) {
 		pen.drawRect(x, y, w, h);
 	}
