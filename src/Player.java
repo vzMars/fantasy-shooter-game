@@ -45,12 +45,12 @@ public class Player extends Sprite {
 
     public void drawProjection(int direction) {
         if (isFire()) {
-            Fire fb = new Fire(x + w / 4, y + h / 4, w / 2, direction); // VALID direction only (0–3)
+            Fire fb = new Fire(x + w / 4, y + h / 4, w / 2, direction);
             spells.add(fb);
         }
         if(isIce()) {
         	
-        	 Ice IB = new Ice(x + w / 4, y + h / 4, w / 2, direction); // VALID direction only (0–3)
+        	 Ice IB = new Ice(x + w / 4, y + h / 4, w / 2, direction); 
              spells.add(IB);
         	
         }

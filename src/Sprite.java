@@ -107,10 +107,10 @@ public abstract class Sprite extends Rect {
 			pen.drawImage(animation[pose].stillImage(), x, y, w, h, null);
 		}
 		
-		hitBox.draw(pen);
-		hurtBox.draw(pen);
-		radius.draw(pen);
-		attackBox.draw(pen);
+//		hitBox.draw(pen);
+//		hurtBox.draw(pen);
+//		radius.draw(pen);
+//		attackBox.draw(pen);
 		
 		
 		moving = false;
