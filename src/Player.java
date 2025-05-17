@@ -20,7 +20,7 @@ public class Player extends Sprite {
     };
 
     public Player(int x, int y, int scale) {
-        super("player", x, y, scale, scale, direction, 4, 10);
+        super("player", x, y, scale, scale, direction, 4, 10, 100);
         AttackType = SWORD;
         
         health = 100;
@@ -106,8 +106,6 @@ public class Player extends Sprite {
     public boolean isLighting() {
         return AttackType == LIGHTING;
     }
-
-
 
 	@Override
 	public void update() {

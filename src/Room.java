@@ -100,6 +100,36 @@ public abstract class Room extends RoomBase {
 		if(pressing[RT])	player.moveRight(4);
 	}
 	
+	public void monsterMovement(Sprite[] monster) {
+		for(int i = 0; i < monster.length; i++) {
+			if(!monster[i].isDead()) {
+				checkSpellDamage(monster[i]);
+				checkDistanceFromPlayer(monster[i]);
+				checkWalls(monster[i]);
+				checkOffScreen(monster[i]);
+			}
+		}
+	}
+	
+	public void checkSpellDamage(Sprite s) {
+		for (Spell spell : new ArrayList<>(player.spells)) {
+			if (spell.overlaps(s.hitBox)) {
+				s.takeDamage(spell.getDamage()); 
+				s.pushAwayFrom(spell, 16);
+				player.spells.remove(spell);
+				break; // One spell per hit
+			}
+		}
+	}
+	
+	public void checkDistanceFromPlayer(Sprite s) {
+		int distance = Math.abs(player.x - s.x);
+		
+		if (distance < 200) {
+			s.chase(player);
+		}
+	}
+	
 	public void playerAttack() {
 		if(pressing[_A] && animationCounter< animationLimit ) {  
 			player.attack(); 

@@ -2,9 +2,6 @@ import java.awt.Graphics;
 
 public class Dungeon1 extends Room {
 
-	
-	
-	
 	static String[] filename = {
 			"Dungeon1_Floor&Walls.txt", 
 			"Dungeon1_Objects.txt"};

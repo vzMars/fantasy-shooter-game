@@ -3,17 +3,17 @@ import java.util.ArrayList;
 
 public class WorldMap1 extends Room {
 	
-	
-	
-	Cyclops[] c = { new Cyclops(200,1000,SCALE), new Cyclops(1000,200,SCALE), new Cyclops(1000,1000,SCALE), new Cyclops(500,1500,SCALE)      };
+	Cyclops[] c = { 
+			new Cyclops(935,875,SCALE), 
+			new Cyclops(131,733,SCALE), 
+			new Cyclops(519,837,SCALE), 
+			new Cyclops(1145,209,SCALE)};
 	
 	
 	static String[] filename = {
 			"WorldMap1_Floor&Walls.txt", 
 			"WorldMap1_Objects.txt"};
-	
-	
-	
+
 	public WorldMap1() {
 		super(filename);
 	}
@@ -21,39 +21,7 @@ public class WorldMap1 extends Room {
 	public void inGameLoopRoomSpecific() {
 		enterWorldMap2();
 		
-		
-		for(Cyclops c : c) {
-
-		if(c.isDead()) {
-			
-			//Death state 
-
-		}else {
-		
-			for (Spell spell : new ArrayList<>(player.spells)) {
-				
-		        if (spell.overlaps(c.hitBox)) {
-		            c.takeDamage(spell.getDamage()); 
-		            c.pushAwayFromBy(spell,16);
-		            player.spells.remove(spell);
-		            break; // One spell per hit
-		        }
-		    
-				}
-				
-		
-		
-		}
-		
-		if( !c.isDead() && c.radius.overlaps(player.radius) ) {
-			c.chase(player);
-		}
-		checkWalls(c);
-	
-		
-		
-		}
-		
+		monsterMovement(c);                        
 	}
 	
 	public void enterWorldMap2() {
@@ -72,16 +40,14 @@ public class WorldMap1 extends Room {
 		map.draw(pen);
 		player.draw(pen);
 		
-		
-		for(Cyclops c : c) 
-			c.draw(pen);
+		for(Cyclops c : c) {
+			if(!c.isDead()) {
+				c.draw(pen);
+			}
+		}
 
-		
-		
 		timer.draw(pen);
 		hotbar.draw(pen);
-		
-
 	}
 
 }

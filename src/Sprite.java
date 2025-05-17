@@ -10,23 +10,86 @@ public abstract class Sprite extends Rect {
 	final int LT = 2;
 	final int RT = 3;
 	
-
-	public int health;
+	int health;
 
 	int pose = DN;
-	
 	
 	Rect hitBox; // To to inflect damage
 	Rect hurtBox; // Used to know if to take damage
 	Rect radius;  // Used for Npc to detact and move closer
 	Rect attackBox;  // Used for NPC if with in, attack
+
+	public Sprite(String name, int x, int y, int w, int h, String[] pose, int count, int duration, int health) {
+		super(x, y, w, h);
+		this.health = health;
+		
+		animation = new Animation[pose.length];
+		
+		for (int i = 0; i < pose.length; i++) {
+			animation[i] = new Animation(name + "_" + pose[i], count, duration);
+		}
+	}
 	
+	public void draw(Graphics pen) {
+		updateRect();
+
+		if (moving) {
+			pen.drawImage(animation[pose].nextImage(), x, y, w, h, null);
+		} else {
+			pen.drawImage(animation[pose].stillImage(), x, y, w, h, null);
+		}
+		
+//		hitBox.draw(pen);
+//		hurtBox.draw(pen);
+//		radius.draw(pen);
+//		attackBox.draw(pen);
+
+		moving = false;
+	}
 	
+	public void moveUp(int dy) {
+		y -= dy;
+		moving = true;
+		pose = UP;
+	}
 	
+	public void moveDown(int dy) {
+		y += dy;		
+		moving = true;
+		pose = DN;
+	}
 	
+	public void moveLeft(int dx) {
+		x -= dx;		
+		moving = true;
+		pose = LT;
+	}
+	
+	public void moveRight(int dx) {
+		x += dx;		
+		moving = true;
+		pose = RT;
+	}
+	
+	public void chase(Sprite s) {
+		if(x > s.x)  moveLeft(2);
+		if(x < s.x)  moveRight(2);
+		if(y > s.y)  moveUp(2);
+		if(y < s.y)  moveDown(2);
+	}
+
+	public abstract void update();
+
+	public boolean isDead() {
+		return health <= 0;
+	}
 	
 	public void hitBox() { // the entire sprite
 		hitBox = new Rect(x,y,w,h);
+	}
+	
+	public void takeDamage(int amt) {
+		 health -= amt;
 	}
 	
 	public void hurtBox() { 
@@ -54,8 +117,6 @@ public abstract class Sprite extends Rect {
 	    }
 	}
 
-
-	
 	public void radius() { // Used for detection of other Sprites nearby
 		
 		int offset = 100;
@@ -69,113 +130,13 @@ public abstract class Sprite extends Rect {
 
 		attackBox = new Rect(x-offset, y-offset  ,w + (offset*2),h + (offset*2));
 	}
-	
-	
-	
+
 	public void updateRect() {
-		
 		hitBox();
 		hurtBox();
 		radius();
 		attackBox();
-		
-		
-		
 	}
-	
-	
-
-	public Sprite(String name, int x, int y, int w, int h, String[] pose, int count, int duration) {
-		super(x, y, w, h);
-		
-		animation = new Animation[pose.length];
-		
-		for (int i = 0; i < pose.length; i++) {
-			animation[i] = new Animation(name + "_" + pose[i], count, duration);
-		}
-	}
-	
-	public void draw(Graphics pen) {
-		
-		updateRect();
-		
-		
-		
-		if (moving) {
-			pen.drawImage(animation[pose].nextImage(), x, y, w, h, null);
-		} else {
-			pen.drawImage(animation[pose].stillImage(), x, y, w, h, null);
-		}
-		
-//		hitBox.draw(pen);
-//		hurtBox.draw(pen);
-//		radius.draw(pen);
-//		attackBox.draw(pen);
-		
-		
-		moving = false;
-	}
-	
-	public void moveUp(int dy) {
-		y -= dy;
-		moving = true;
-		pose = UP;
-	}
-	
-	public void moveDown(int dy) {
-		y += dy;		
-		moving = true;
-		pose = DN;
-	}
-	
-	public void moveLeft(int dx) {
-		x -= dx;		
-		moving = true;
-		pose = LT;
-	}
-	
-	public void moveRight(int dx) {
-		x += dx;		
-		moving = true;
-		pose = RT;
-	}
-
-	public abstract void update();
-	
-	
-	
-	public boolean isDead() {
-		
-		return health <= 0;
-	}
-	
-	
-	
-	
-		
-		
-	
-	
-	
 	
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
