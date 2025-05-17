@@ -37,7 +37,9 @@ public abstract class EnemySprite  extends Sprite{
 	
 	public void chase(Sprite target) {
 	    int speed = 2;
+	    
 	    moving =true;
+	    
 	    if (target.x < this.x) {
 	        x -= speed;
 	        pose = LT;

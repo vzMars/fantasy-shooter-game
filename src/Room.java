@@ -103,15 +103,15 @@ public abstract class Room extends RoomBase {
 		
 		
 		
+
 		checkWalls(player);
 		
-		for(Sprite f: new ArrayList<>(player.spells)) {
+		for(Sprite Spell: new ArrayList<>(player.spells)) {
 			
 			for(Rect r : map.wall) {
 				
-				if(f.overlaps(r)) {
-					
-					player.spells.remove(f);
+				if(Spell.overlaps(r)) {
+					player.spells.remove(Spell);
 				}
 			}
 			

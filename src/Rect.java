@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.util.Random;
 
 public class Rect {
 	int x;
@@ -6,6 +7,8 @@ public class Rect {
 	
 	int w;
 	int h;
+	
+	public  Random rand = new Random();
 	
 	public Rect(int x, int y, int w, int h) {
 		this.x = x;
@@ -27,6 +30,16 @@ public class Rect {
 		if(wasAbove(r))	    pushAbove(r);
 		if(wasBelow(r))	    pushBelow(r);
 	}
+	
+	
+	public void pushAwayFromBy(Rect r, int amt) {
+		if(wasLeftOf(r))	pushLeftOfBy(r,  amt);
+		if(wasRightOf(r))	pushRightOfBy(r,  amt);
+		if(wasAbove(r))	    pushAboveBy(r,  amt);
+		if(wasBelow(r))	    pushBelowBy(r,  amt);
+	}
+	
+	
 	
 	public boolean wasLeftOf(Rect r) {
 		return x - 4 < r.x - w + 1;
@@ -59,6 +72,29 @@ public class Rect {
 	public void pushBelow(Rect r) {
 		y = r.y + r.h + 1;
 	}
+	
+	
+	
+	
+	public void pushLeftOfBy(Rect r , int amt) {
+		x = r.x - w - amt;
+	}
+	
+	public void pushRightOfBy(Rect r, int amt) {
+		x = r.x + r.w + amt;
+	}
+	
+	public void pushAboveBy(Rect r, int amt) {
+		y = r.y - h - amt;
+	}
+	
+	public void pushBelowBy(Rect r, int amt) {
+		y = r.y + r.h + amt;
+	}
+	
+	
+	
+	
 	
 	public void chase(Rect r)
 	{

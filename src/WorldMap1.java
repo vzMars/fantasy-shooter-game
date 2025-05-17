@@ -5,7 +5,7 @@ public class WorldMap1 extends Room {
 	
 	
 	
-	Cyclops c = new Cyclops(1000,1000,SCALE);
+	Cyclops[] c = { new Cyclops(200,1000,SCALE), new Cyclops(1000,200,SCALE), new Cyclops(1000,1000,SCALE), new Cyclops(500,1500,SCALE)      };
 	
 	
 	static String[] filename = {
@@ -21,24 +21,39 @@ public class WorldMap1 extends Room {
 	public void inGameLoopRoomSpecific() {
 		enterWorldMap2();
 		
-		if(c.isDead()) {
-//			System.out.println("Bufflo is dead");
-		}
 		
-		for (Sprite f : new ArrayList<>(player.spells)) {
-	        if (f.overlaps(c.hitBox)) {
-	            c.takeDamage(20); // Damage amount
-	            player.spells.remove(f);
-	            break; // One spell per hit
-	        }
-	    }
+		for(Cyclops c : c) {
 
+		if(c.isDead()) {
+			
+			//Death state 
+
+		}else {
 		
+			for (Spell spell : new ArrayList<>(player.spells)) {
+				
+		        if (spell.overlaps(c.hitBox)) {
+		            c.takeDamage(spell.getDamage()); 
+		            c.pushAwayFromBy(spell,16);
+		            player.spells.remove(spell);
+		            break; // One spell per hit
+		        }
+		    
+				}
+				
+		
+		
+		}
 		
 		if( !c.isDead() && c.radius.overlaps(player.radius) ) {
 			c.chase(player);
 		}
 		checkWalls(c);
+	
+		
+		
+		}
+		
 	}
 	
 	public void enterWorldMap2() {
@@ -57,7 +72,12 @@ public class WorldMap1 extends Room {
 		map.draw(pen);
 		player.draw(pen);
 		
-		c.draw(pen);
+		
+		for(Cyclops c : c) 
+			c.draw(pen);
+
+		
+		
 		timer.draw(pen);
 		hotbar.draw(pen);
 		

@@ -10,7 +10,7 @@ public class Player extends Sprite {
 
     public int AttackType;
 
-    ArrayList<Sprite> spells = new ArrayList<>();
+    ArrayList<Spell> spells = new ArrayList<>();
 
     static String[] direction = {
         "up", "dn", "lt", "rt",
@@ -75,10 +75,10 @@ public class Player extends Sprite {
 	public void draw(Graphics Screen) {
         super.draw(Screen);
 
-        for(Sprite fb : new ArrayList<>(spells)) {
+        for(Spell spell : new ArrayList<>(spells)) {
           
-            fb.update();
-            fb.draw(Screen);
+        	spell.update();
+        	spell.draw(Screen);
             
         }
     }
