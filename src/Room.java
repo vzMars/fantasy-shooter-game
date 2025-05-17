@@ -42,8 +42,8 @@ public abstract class Room extends RoomBase {
 	public abstract void inGameLoopRoomSpecific();
 
 	public void inGameLoop() {
-//		System.out.println("Player x:" + player.x);
-//		System.out.println("Player y:" + player.y);
+		System.out.println("Player x:" + player.x);
+		System.out.println("Player y:" + player.y);
 		
 		// Timer for the room
 //		timer.inGameLoop();
@@ -123,9 +123,10 @@ public abstract class Room extends RoomBase {
 	}
 	
 	public void checkDistanceFromPlayer(Sprite s) {
-		int distance = Math.abs(player.x - s.x);
+		int xDistance = Math.abs(player.x - s.x);
+		int yDistance = Math.abs(player.y - s.y);
 		
-		if (distance < 200) {
+		if (xDistance < 200 && yDistance < 200) {
 			s.chase(player);
 		}
 	}

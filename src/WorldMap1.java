@@ -3,11 +3,12 @@ import java.util.ArrayList;
 
 public class WorldMap1 extends Room {
 	
-	Cyclops[] c = { 
-			new Cyclops(935,875,SCALE), 
-			new Cyclops(131,733,SCALE), 
-			new Cyclops(519,837,SCALE), 
-			new Cyclops(1145,209,SCALE)};
+	Sprite[] sprites = { 
+			new Cyclops(1051,761,SCALE), 
+			new Orge(131,733,SCALE), 
+			new Wolf(519,837,SCALE), 
+			new TreeMonster(1199,205,SCALE),
+			new Boar(315, 21,SCALE)};
 	
 	
 	static String[] filename = {
@@ -21,7 +22,7 @@ public class WorldMap1 extends Room {
 	public void inGameLoopRoomSpecific() {
 		enterWorldMap2();
 		
-		monsterMovement(c);                        
+		monsterMovement(sprites);                        
 	}
 	
 	public void enterWorldMap2() {
@@ -40,9 +41,9 @@ public class WorldMap1 extends Room {
 		map.draw(pen);
 		player.draw(pen);
 		
-		for(Cyclops c : c) {
-			if(!c.isDead()) {
-				c.draw(pen);
+		for(Sprite s : sprites) {
+			if(!s.isDead()) {
+				s.draw(pen);
 			}
 		}
 
