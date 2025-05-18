@@ -3,7 +3,13 @@ import java.awt.Graphics;
 public class Dungeon3 extends Room {
 
 	
-	
+	Sprite[] sprites = { 
+			new Golem(1020,1015,SCALE), 
+			new Golem(1020,247,SCALE), 
+			new Golem(592,271,SCALE), 
+			new Golem(592,655,SCALE),
+			new Golem(388, 855,SCALE),
+			new Golem(153,477,SCALE)};
 	
 	
 	static String[] filename = {
@@ -12,10 +18,15 @@ public class Dungeon3 extends Room {
 	
 	public Dungeon3() {
 		super(filename);
+		
+		Sprites = sprites;
 	}
 	
 	public void inGameLoopRoomSpecific() {
 		enterDungeon4();
+		for(Sprite sprite : sprites) {
+			sprite.actions();
+		}
 	}
 	
 	public void enterDungeon4() {
@@ -32,10 +43,14 @@ public class Dungeon3 extends Room {
 	// room specific draw method that overrides Room's draw method
 	public void draw(Graphics pen) {
 		map.draw(pen);
-		
-		
-		
 		player.draw(pen);
+		
+		for(Sprite s : sprites) {
+			if(!s.isDead()) {
+				s.draw(pen);
+			}
+		}
+		
 		timer.draw(pen);
 		hotbar.draw(pen);
 	}

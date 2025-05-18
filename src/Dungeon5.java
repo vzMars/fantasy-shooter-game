@@ -1,6 +1,14 @@
 import java.awt.Graphics;
 
 public class Dungeon5 extends Room {
+	
+	Sprite[] sprites = { 
+			new FireGhost(480,351,SCALE), 
+			new Demon(596,515,SCALE), 
+			new FireGhost(712,351,SCALE), 
+			new Demon(596,675,SCALE),
+			new FireGhost(668, 947,SCALE),
+			new Demon(496,835,SCALE)};
 
 	static String[] filename = {
 			"Dungeon5_Floor&Walls.txt", 
@@ -8,10 +16,15 @@ public class Dungeon5 extends Room {
 	
 	public Dungeon5() {
 		super(filename);
+		
+		Sprites = sprites;
 	}
 	
 	public void inGameLoopRoomSpecific() {
 		enterDungeon6();
+		for(Sprite sprite : sprites) {
+			sprite.actions();
+		}
 	}
 	
 	public void enterDungeon6() {
@@ -29,6 +42,13 @@ public class Dungeon5 extends Room {
 	public void draw(Graphics pen) {
 		map.draw(pen);
 		player.draw(pen);
+		
+		for(Sprite s : sprites) {
+			if(!s.isDead()) {
+				s.draw(pen);
+			}
+		}
+		
 		timer.draw(pen);
 		hotbar.draw(pen);
 	}
