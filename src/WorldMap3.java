@@ -24,11 +24,16 @@ public class WorldMap3 extends Room {
 	
 	public WorldMap3() {
 		super(filename);
+		
+		Sprites = sprites;
 	}
 	
 	public void inGameLoopRoomSpecific() {
 		enterTown();
-		monsterMovement(sprites);   
+		for(Sprite sprite : sprites) {
+			sprite.actions();
+		}
+		
 	}
 	
 	public void enterTown() {

@@ -25,11 +25,20 @@ public class WorldMap2 extends Room {
 	
 	public WorldMap2() {
 		super(filename);
+	
+		Sprites = sprites;
 	}
 	
 	public void inGameLoopRoomSpecific() {
 		enterWorldMap3();
-		monsterMovement(sprites);   
+		
+		for(Sprite sprite : sprites) {
+			sprite.actions();
+		}
+		
+		
+		
+		
 	}
 	
 	public void enterWorldMap3() {

@@ -1,12 +1,6 @@
 import java.awt.Graphics;
 
 public class Town extends Room {
-	
-	Sprite[] sprites = { 
-			new BlueNPC(837,191,SCALE), 
-			new OrcNPC(129,767,SCALE), 
-			new PurpleNPC(255,129,SCALE), 
-			new RedNPC(325,1081,SCALE)};
 
 	static String[] filename = {
 			"Town_Floor&Walls.txt", 
@@ -22,36 +16,10 @@ public class Town extends Room {
 	
 	public Town() {
 		super(filename);
-		
-		for(Sprite s : sprites) {
-			if(s instanceof RedNPC || s instanceof OrcNPC) {
-				s.setVelocityX(1);
-			} else {
-				s.setVelocityY(1);
-			}
-		}
 	}
 	
 	public void inGameLoopRoomSpecific() {
 		enterDungeon1();
-		npcMovement();  
-	}
-	
-	public void npcMovement() {
-		for(Sprite s : sprites) {
-			checkWalls(s);
-			checkOffScreen(s);
-		}
-
-		for(Sprite s : sprites) {
-			if(s instanceof RedNPC || s instanceof OrcNPC) {
-				s.moveX();
-				if(player.overlaps(s)) s.bounceOffHorizontalSurface();
-			} else {
-				s.moveY();
-				if(player.overlaps(s)) s.bounceOffVerticalSurface();
-			}
-		}
 	}
 	
 	public void enterDungeon1() {
@@ -69,11 +37,6 @@ public class Town extends Room {
 	public void draw(Graphics pen) {
 		map.draw(pen);
 		player.draw(pen);
-		
-		for(Sprite s : sprites) {
-			s.draw(pen);
-		}
-		
 		timer.draw(pen);
 		hotbar.draw(pen);
 	}

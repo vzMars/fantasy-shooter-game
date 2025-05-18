@@ -1,14 +1,25 @@
+import java.util.ArrayList;
 
-public class Cyclops extends Sprite {
+public class Cyclops extends EnemySprite {
 	static String[] direction = { "up", "dn", "lt", "rt"};
 
 	public Cyclops(int x, int y, int scale) {
 		super("cyclops", x, y, scale, scale, direction, 3, 10, 100);
+		
+		health  = 120;
+		setDamageGiven(12);
+		setForcePushback(20);
+		setChaseSpeed(2);
+	
+	
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+
+	
+	
+	
+	
+	 
+	
+	
 }

@@ -22,6 +22,8 @@ public class PauseButton extends Button{
 	}
 	
 	public void inGameLoop() {
+		//Pause is plauer dies to restart or retry
+		if(Room.player.isDead()) {pause();}
 		
 		if(Game.mousePressed && !isPressed() && isPressed(Game.mx, Game.my));
 		

@@ -1,4 +1,3 @@
-
 public class Slime extends Sprite {
 	static String[] direction = { "up", "dn", "lt", "rt"};
 

@@ -1,16 +1,20 @@
 
-public class Wolf extends Sprite {
+public class Wolf extends EnemySprite {
 	static String[] direction = { "up", "dn", "lt", "rt"};
 
 	public Wolf(int x, int y, int scale) {
 		super("wolf", x, y, scale, scale, direction, 3, 10, 100);
-	}
-	
-	
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+		
+		
+		health  = 80;
+		setDamageGiven(5);
+		setForcePushback(7);
+		setChaseSpeed(4);
+		
 		
 	}
+
+	
+	
 	
 }

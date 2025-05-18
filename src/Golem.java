@@ -1,15 +1,35 @@
 
-public class Golem extends Sprite {
+public class Golem extends EnemySprite {
 	static String[] direction = { "up", "dn", "lt", "rt"};
 
 	public Golem(int x, int y, int scale) {
 		super("golem", x, y, scale, scale, direction, 3, 10, 100);
+	
+		
+		setDamageGiven(30);
+		setForcePushback(40);
+		setChaseSpeed(1);
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	
+
+	@Override
+	public void setDamageGiven(int amt) {
+		
+		this.damageGive = amt;
+		
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public void setForcePushback(int amt) {
+		this.forcePushBack = amt;
 	}
 	
 }

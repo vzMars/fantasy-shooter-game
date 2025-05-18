@@ -1,4 +1,3 @@
-
 public class Skeleton extends Sprite {
 	static String[] direction = { "up", "dn", "lt", "rt"};
 

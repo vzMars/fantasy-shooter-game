@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-public class Button extends Rect {
+public class Button extends Rect{
 	Image btnReleased;
 	Image btnPressed;
 	Image btn;

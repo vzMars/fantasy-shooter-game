@@ -41,9 +41,12 @@ public abstract class Room extends RoomBase {
 	
 	public abstract void inGameLoopRoomSpecific();
 
+	
+	public Sprite[] Sprites = new Sprite[1];
+	
 	public void inGameLoop() {
-		System.out.println("Player x:" + player.x);
-		System.out.println("Player y:" + player.y);
+//		System.out.println("Player x:" + player.x);
+//		System.out.println("Player y:" + player.y);
 		
 		// Timer for the room
 //		timer.inGameLoop();
@@ -58,10 +61,13 @@ public abstract class Room extends RoomBase {
 		checkSpellsOverLap();
 		
 		checkWalls(player);
+		checkSprites();
 		
 		checkOffScreen(player);
 		inGameLoopRoomSpecific();
 	}
+	
+
 	
 	public void playerAttackType() {
 		// Fire Spell
@@ -100,37 +106,6 @@ public abstract class Room extends RoomBase {
 		if(pressing[RT])	player.moveRight(4);
 	}
 	
-	public void monsterMovement(Sprite[] monster) {
-		for(int i = 0; i < monster.length; i++) {
-			if(!monster[i].isDead()) {
-				checkSpellDamage(monster[i]);
-				checkDistanceFromPlayer(monster[i]);
-				checkWalls(monster[i]);
-				checkOffScreen(monster[i]);
-			}
-		}
-	}
-	
-	public void checkSpellDamage(Sprite s) {
-		for (Spell spell : new ArrayList<>(player.spells)) {
-			if (spell.overlaps(s.hitBox)) {
-				s.takeDamage(spell.getDamage()); 
-				s.pushAwayFrom(spell, 16);
-				player.spells.remove(spell);
-				break; // One spell per hit
-			}
-		}
-	}
-	
-	public void checkDistanceFromPlayer(Sprite s) {
-		int xDistance = Math.abs(player.x - s.x);
-		int yDistance = Math.abs(player.y - s.y);
-		
-		if (xDistance < 150 && yDistance < 150) {
-			s.chase(player);
-		}
-	}
-	
 	public void playerAttack() {
 		if(pressing[_A] && animationCounter< animationLimit ) {  
 			player.attack(); 
@@ -140,10 +115,21 @@ public abstract class Room extends RoomBase {
 		
 		if(!pressing[_A]) { animationCounter = 0;}
 		
-//		if(pressing [_A])  player.attack();
-//		if(pressing )
 	}
   	
+	public void checkSprites() {
+		
+		for(Sprite S: Sprites) {
+			if(S == null) {
+				continue;
+			}
+			
+			checkWalls(S);
+			checkOffScreen(S);
+		}
+		
+	}
+	
 	public void checkWalls(Sprite s) {
 		for(int i = 0; i < map.wall.length; i++) {
 			if(s.overlaps(map.wall[i])) {
@@ -159,6 +145,16 @@ public abstract class Room extends RoomBase {
 					player.spells.remove(Spell);
 				}
 			}
+		}
+	}
+	
+	
+	public void checkDistanceFromPlayer(Sprite s) {
+		int xDistance = Math.abs(player.x - s.x);
+		int yDistance = Math.abs(player.y - s.y);
+		
+		if (xDistance < 150 && yDistance < 150) {
+			s.chase(player);
 		}
 	}
 	

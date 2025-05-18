@@ -9,6 +9,8 @@ public class Player extends Sprite {
     public static final int SWORD = 3;
 
     public int AttackType;
+    
+    public boolean meleeAttack = false;
 
     ArrayList<Spell> spells = new ArrayList<>();
 
@@ -40,6 +42,8 @@ public class Player extends Sprite {
 	    } else if (isSword()) {
 	        drawProjection(baseDirection);
 	        pose = baseDirection + 8; // Sword pose
+	        
+	        
 	    }
 	}
 
@@ -59,9 +63,19 @@ public class Player extends Sprite {
         	Lighting LB = new Lighting(x + w / 4, y + h / 4, w / 2, direction);
         	spells.add(LB);
         }
+        
+        if(isSword()) {
+        	
+        	meleeAttack = true;
+        	
+        	
+        }
     }
 
 
+    
+    
+    
     @Override
 	public String toString() {
 		final int maxLen = 10;
@@ -107,9 +121,18 @@ public class Player extends Sprite {
         return AttackType == LIGHTING;
     }
 
+
+    
+    
+    
+
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		super.update();
+		
+		this.meleeAttack = false;
+		
+		
 		
 	}
 }

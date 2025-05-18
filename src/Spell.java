@@ -1,5 +1,5 @@
 
-public abstract class Spell extends Sprite {
+public abstract class Spell extends Sprite{
 
 	static String[] direction = { "up", "dn", "lt", "rt"};
 
@@ -11,11 +11,13 @@ public abstract class Spell extends Sprite {
  	
 	int speed;
 	int dir;
-	
+	int pushBackAmount;
 	int damage;
 	
 	public Spell( String name,int x, int y, int scale, int dir) {
 		super(name, x, y, scale, scale, direction, 4, 10, 100);
+		
+		
 		
 		this.dir = dir;
 	}  
@@ -27,7 +29,10 @@ public abstract class Spell extends Sprite {
 	public int getDamage() {
 		return damage;
 	}
-
+	
+	public int getPushbackAMT() {
+		return this.pushBackAmount;
+	}
 
 
 
@@ -50,4 +55,9 @@ public abstract class Spell extends Sprite {
 		
 		this.damage = newDamage;
 	}
+	
+	
+	
+	
+	
 }
