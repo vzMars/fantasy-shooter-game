@@ -8,10 +8,5 @@ public class Boar extends EnemySprite {
 		health  = 120;
 		setDamageGiven(12);
 		setForcePushback(100);
-
-	
 	}
-
-	
-	
 }

@@ -9,16 +9,5 @@ public class Cyclops extends EnemySprite {
 		health  = 120; // Health of the enemy
 		setDamageGiven(12); // the damage it gives to the player
 		setForcePushback(20); // the push back value it gives to the player
-	
-	
 	}
-
-
-	
-	
-	
-	
-	 
-	
-	
 }

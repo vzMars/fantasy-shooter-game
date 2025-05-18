@@ -11,8 +11,6 @@ public class WorldMap1 extends Room {
 			new Wolf(519,837,SCALE), 
 			new TreeMonster(1199,205,SCALE),
 			new Boar(315, 21,SCALE)
-			
-	
 	};
 	
 	
