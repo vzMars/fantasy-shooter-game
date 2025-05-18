@@ -15,13 +15,13 @@ public abstract class EnemySprite  extends Sprite{
 	int triggerTimer = 0;
 
 	
-	public EnemySprite(String name, int x, int y, int w, int h, String[] pose, int count, int duration, int health) {
+	public EnemySprite(String name, int x, int y, int w, int h, String[] pose, int count, int duration, int health, int chaseSpeed) {
 		super(name, x, y, w, h, pose, count, duration, health);
 
 		//Default values unless changes in the Class
 		 damageGive  = 3; 
 		 forcePushBack = 20;
-		 chaseSpeed = 2;
+		 this.chaseSpeed = chaseSpeed;
 		
 		 defaultChaseSpeed = chaseSpeed;
 		
@@ -155,10 +155,10 @@ public abstract class EnemySprite  extends Sprite{
 			this.setChaseSpeed(defaultChaseSpeed);
 			break;
 		case"ice": // Slow the affected person down. 
-			this.setChaseSpeed(2);
+			this.setChaseSpeed(  this.defaultChaseSpeed/2  );
 			break;
 		case"lighting":
-			this.setChaseSpeed(4); // Gives the affected person speed. 
+			this.setChaseSpeed( this.defaultChaseSpeed + this.defaultChaseSpeed/2 ); // Gives the affected person speed. 
 			break;
 		
 		}

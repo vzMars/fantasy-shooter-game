@@ -11,7 +11,7 @@ public abstract class Sprite extends Rect {
 	final int RT = 3;
 	
 	public String name;
-	public int health;
+	public int health, defaultHealth;
 
 	int pose = DN;
 	
@@ -30,6 +30,7 @@ public abstract class Sprite extends Rect {
 	public Sprite(String name, int x, int y, int w, int h, String[] pose, int count, int duration, int health) {
 		super(x, y, w, h);
 		this.health = health;
+		this.defaultHealth = health;
 		this.name = name;
 		startingX = x;
 		startingY = y;
@@ -41,8 +42,6 @@ public abstract class Sprite extends Rect {
 		}
 	}
 
-	
-	
 	public void chase(Sprite s) {
 		if(x > s.x)  moveLeft(2);
 		if(x < s.x)  moveRight(2);
@@ -80,21 +79,11 @@ public abstract class Sprite extends Rect {
 		vx = -vx;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	public String getName() {
 		
 		return this.name;
 	}
-	
-	
-	
-	
+
 	public void hitBox() { // the entire sprite
 		hitBox = new Rect(x+5,y+10,w-15,h-15);
 	}
@@ -147,15 +136,10 @@ public abstract class Sprite extends Rect {
 		if(health < 0) {health = 0; return;}
 		 
 		health -= amt;
-		 
-		  
-	
-	
-	
+
 	}
 	
-	
-	
+
 	public void setVelocityX(int vx) {
 		this.vx = vx;
 	}
@@ -172,16 +156,13 @@ public abstract class Sprite extends Rect {
 		radius();
 		attackBox();
 		
-		
-		
 	}
 	
 	
 	public void draw(Graphics pen) {
 		
 		updateRect();
-		
-		
+	
 		if (moving) {
 			pen.drawImage(animation[pose].nextImage(), x, y, w, h, null);
 		} else {
@@ -191,9 +172,7 @@ public abstract class Sprite extends Rect {
 //		hitBox.draw(pen);
 //		hurtBox.draw(pen);
 //		radius.draw(pen);
-//		attackBox.draw(pen);
-		
-		
+//		attackBox.draw(pen);		
 		moving = false;
 	}
 	
@@ -221,32 +200,25 @@ public abstract class Sprite extends Rect {
 		pose = RT;
 	}
 
-	
-	
-	
 	public void update() {
 		
 		updateRect();
 		
 		
 	}
-	
-	
+		
 	public void reset(int x, int y) {
 		
 		this.x = x;
 		this.y = y;
-		health = 100;
+		health = defaultHealth;
 		
 	}
-	
-	
+		
 	public boolean isDead() {
 		
 		return health <= 0;
-	}
-	
-	
+	}	
 	
 	public void actions() {
 		updateRect();
@@ -256,11 +228,9 @@ public abstract class Sprite extends Rect {
 		
 	
 	public boolean  checkNull() {
-		
-		
+	
 		return (this != null && this.attackBox != null  && this.hitBox != null && this.hurtBox !=null) ;
-		
-		
+			
 	}
 	
 	

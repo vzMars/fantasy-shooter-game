@@ -60,11 +60,7 @@ public class WorldMap1 extends Room {
 				s.draw(pen);
 			}
 		}
-			
-		
-		
-		
-		
+
 		timer.draw(pen);
 		hotbar.draw(pen);
 		

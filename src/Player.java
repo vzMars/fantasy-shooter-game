@@ -22,10 +22,10 @@ public class Player extends Sprite {
     };
 
     public Player(int x, int y, int scale) {
-        super("player", x, y, scale, scale, direction, 4, 10, 100);
+        super("player", x, y, scale, scale, direction, 4, 10, 1000);
         AttackType = SWORD;
         
-        health = 100;
+        
     }
 
     
@@ -66,16 +66,12 @@ public class Player extends Sprite {
         
         if(isSword()) {
         	
-        	meleeAttack = true;
-        	
+        	meleeAttack = true;  	
         	
         }
     }
 
 
-    
-    
-    
     @Override
 	public String toString() {
 		final int maxLen = 10;
@@ -121,10 +117,6 @@ public class Player extends Sprite {
         return AttackType == LIGHTING;
     }
 
-
-    
-    
-    
 
 	@Override
 	public void update() {

@@ -123,7 +123,7 @@ public abstract class Room extends RoomBase {
 			if(S == null) {
 				continue;
 			}
-			
+
 			checkWalls(S);
 			checkOffScreen(S);
 		}
