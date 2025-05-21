@@ -34,6 +34,7 @@ public class Dungeon6 extends Room {
 		
 		timer.draw(pen);
 		hotbar.draw(pen);
+		healthbar.draw(pen);
 	}
 
 }

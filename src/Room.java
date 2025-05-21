@@ -9,6 +9,7 @@ public abstract class Room extends RoomBase {
 	static Player player = new Player(898, 1203, SCALE);
 	static CountdownTimer timer = new CountdownTimer(550, 5, 90, 10, CountdownTimer.SECONDS);
 	static Hotbar hotbar = new Hotbar();
+	static Healthbar healthbar = new Healthbar(0,0);
 	
 	static int count = 0;
 	
@@ -34,9 +35,10 @@ public abstract class Room extends RoomBase {
 	
 	public void draw(Graphics pen) {
 		map.draw(pen);
-		player.draw(pen);
+		player.draw(pen);		
 		timer.draw(pen);
 		hotbar.draw(pen);
+		healthbar.draw(pen);
 	}
 	
 	public abstract void inGameLoopRoomSpecific();

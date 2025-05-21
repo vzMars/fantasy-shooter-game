@@ -76,6 +76,7 @@ public class Town extends Room {
 		
 		timer.draw(pen);
 		hotbar.draw(pen);
+		healthbar.draw(pen);
 	}
 	
 }
