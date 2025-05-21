@@ -116,6 +116,12 @@ public class Player extends Sprite {
     public boolean isLighting() {
         return AttackType == LIGHTING;
     }
+    
+    @Override
+    public void takeDamage(int amt) {
+    	super.takeDamage(amt);
+    	Room.healthbar.update();
+    }
 
 
 	@Override
