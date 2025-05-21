@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 
 public class Menu {
@@ -82,11 +81,8 @@ public class Menu {
 		
 		Room.current = Room.room[0];
 		
-//		Room.player.x = 898;
-//		Room.player.y = 1203;
-		
-		
 		Room.player.reset(898, 1203);
+		Room.healthbar.update();
 	}
 	
 	public void retry() {
@@ -103,16 +99,12 @@ public class Menu {
 		if(Room.current instanceof WorldMap1) {
 			roomNum = 0;
 			new WorldMap1();
-//			Room.player.x = 898;
-//			Room.player.y = 1203;
 			Room.player.reset(898, 1203);
 		}
 		
 		else if(Room.current instanceof WorldMap2) {
 			roomNum = 1;
 			new WorldMap2();
-//			Room.player.x = 63;
-//			Room.player.y = 1203;
 			Room.player.reset(63, 1203);
 
 		}
@@ -120,8 +112,6 @@ public class Menu {
 		else if(Room.current instanceof WorldMap3) {
 			roomNum = 2;
 			new WorldMap3();
-//			Room.player.x = 1207;
-//			Room.player.y = 1151;
 			Room.player.reset(1207, 1151);
 
 		}
@@ -129,8 +119,6 @@ public class Menu {
 		else if(Room.current instanceof Town) {
 			roomNum = 3;
 			new Town();
-//			Room.player.x = 320;
-//			Room.player.y = 1207;
 			Room.player.reset(320, 1207);
 
 		}
@@ -138,8 +126,6 @@ public class Menu {
 		else if(Room.current instanceof Dungeon1) {
 			roomNum = 4;
 			new Dungeon1();
-//			Room.player.x = 460;
-//			Room.player.y = 121;
 			Room.player.reset(460, 121);
 
 		}
@@ -147,8 +133,6 @@ public class Menu {
 		else if(Room.current instanceof Dungeon2) {
 			roomNum = 5;
 			new Dungeon2();
-//			Room.player.x = 1020;
-//			Room.player.y = 1091;
 			Room.player.reset(1020, 1091);
 
 		}
@@ -156,8 +140,6 @@ public class Menu {
 		else if(Room.current instanceof Dungeon3) {
 			roomNum = 6;
 			new Dungeon3();
-//			Room.player.x = 1036;
-//			Room.player.y = 579;
 			Room.player.reset(1036, 579);
 
 		}
@@ -165,8 +147,6 @@ public class Menu {
 		else if(Room.current instanceof Dungeon4) {
 			roomNum = 7;
 			new Dungeon4();
-//			Room.player.x = 116;
-//			Room.player.y = 1015;
 			Room.player.reset(116, 1015);
 
 		}
@@ -174,8 +154,6 @@ public class Menu {
 		else if(Room.current instanceof Dungeon5) {
 			roomNum = 8;
 			new Dungeon5();
-//			Room.player.x = 512;
-//			Room.player.y = 127;
 			Room.player.reset(512, 127);
 
 			
@@ -183,11 +161,11 @@ public class Menu {
 		else if(Room.current instanceof Dungeon6) {
 			roomNum = 9;
 			new Dungeon6();
-//			Room.player.x = 636;
-//			Room.player.y = 1083;
 			Room.player.reset(636, 1083);
 
 		}
+		
+		Room.healthbar.update();
 		
 		//the current room would be the new room created
 		Room.current       = Room.room[9];
