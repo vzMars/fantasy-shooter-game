@@ -43,7 +43,7 @@ public class PauseButton extends Button{
 	}
 	
 	public void resume() {
-		if(Room.timer.hasEnded()) return;
+		if(Room.timer.hasEnded() || Room.player.isDead()) return;
 		img = pause;
 		Game.isPaused = false;
 		if(Room.timer.isStarted()) Room.timer.resume();
