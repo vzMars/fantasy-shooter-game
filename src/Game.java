@@ -23,6 +23,9 @@ public class Game extends GameBase {
 		pauseBtn = new PauseButton(1205, 5, 70);
 		menu     = new Menu();
 		
+		Room.healthbar.setLocation(7, 7);
+		Room.hotbar.setLocation(Room.healthbar.x, Room.healthbar.y + Room.healthbar.h + 10);
+		
 		pauseBtn.pause();
 		
 //		Room.timer.setEnabled(true);
