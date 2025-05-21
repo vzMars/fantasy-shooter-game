@@ -95,7 +95,7 @@ public abstract class Room extends RoomBase {
 		if(pressing[_4]) {
 			player.setAttackType(3);
 			animationLimit = 15;
-//			hotbar.setCurrentSlot(3);	 Needs implementation in the HotBar class		
+			hotbar.setCurrentSlot(3);
 		}
 	}
 	

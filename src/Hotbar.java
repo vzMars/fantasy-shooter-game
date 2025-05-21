@@ -4,7 +4,7 @@ import java.awt.Toolkit;
 
 public class Hotbar {
 	static int slotSize  = 100;
-	static int slotDist  = slotSize + 100; //distance between slots
+	static int slotDist  = slotSize + 20; //distance between slots
 	
 	private int x;
 	private int y;
@@ -20,15 +20,17 @@ public class Hotbar {
 	}
 	
 	public Hotbar(int x, int y) {
-		this(x, y, 3);
+		this(x, y, 4);
 		
 		slots[0].addImage(Toolkit.getDefaultToolkit().getImage("fire_up_0.png"));
 		slots[1].addImage(Toolkit.getDefaultToolkit().getImage("ice_up_0.png"));
 		slots[2].addImage(Toolkit.getDefaultToolkit().getImage("lighting_up_0.png"));
+		slots[3].addImage(Toolkit.getDefaultToolkit().getImage("sword.png"));
 		
 		slots[0].bgColor = new Color(220,  20,  60, 200);
 		slots[1].bgColor = new Color(135, 206, 235, 200);
 		slots[2].bgColor = new Color(148,   0, 211, 200);
+		slots[3].bgColor = new Color(190, 131,  43, 200);
 		
 	}
 	
