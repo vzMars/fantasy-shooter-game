@@ -11,5 +11,6 @@
 	<classpathentry kind="src" path="images_spells"/>
 	<classpathentry kind="src" path="images_menu"/>
 	<classpathentry kind="src" path="images_borders"/>
+	<classpathentry kind="src" path="images_healthbars"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
