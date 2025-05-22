@@ -83,6 +83,7 @@ public class Menu {
 		
 		Room.player.reset(898, 1203);
 		Room.healthbar.update();
+		Room.hotbar.deselectCurrentSlot();
 	}
 	
 	public void retry() {
@@ -166,6 +167,7 @@ public class Menu {
 		}
 		
 		Room.healthbar.update();
+		Room.hotbar.deselectCurrentSlot();
 		
 		//the current room would be the new room created
 		Room.current       = Room.room[9];
