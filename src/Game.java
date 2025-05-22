@@ -24,7 +24,7 @@ public class Game extends GameBase {
 		menu     = new Menu();
 		
 		Room.healthbar.setLocation(7, 7);
-		Room.hotbar.setLocation(Room.healthbar.x, Room.healthbar.y + Room.healthbar.h + 10);
+		Room.hotbar.setLocation(Room.healthbar.x, Room.healthbar.y + Room.healthbar.h + 5);
 		
 		pauseBtn.pause();
 		
